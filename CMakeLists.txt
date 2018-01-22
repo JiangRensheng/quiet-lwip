@@ -1,10 +1,11 @@
 cmake_minimum_required (VERSION 2.6)
 project (Quiet-LWIP)
+SET(CMAKE_BUILD_TYPE Debug)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_definitions(-DQUIET_DEBUG)
     set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} "-g3 -O0 -fsanitize=address")
-    set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} "-Wl,-no_pie")
+#    set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} "-Wl,-no_pie")
 else()
     if("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
       set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} "-Ofast -fsanitize=address -g3")
